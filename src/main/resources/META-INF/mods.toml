@@ -60,9 +60,3 @@ mandatory=true
 ordering="NONE"
 side="BOTH"
 versionRange="[v0.5.0c,)"
-[[dependencies.createbb]]
-modId="flywheel"
-mandatory=true
-ordering="NONE"
-side="CLIENT"
-versionRange="[1.18-0.6.2,)"
