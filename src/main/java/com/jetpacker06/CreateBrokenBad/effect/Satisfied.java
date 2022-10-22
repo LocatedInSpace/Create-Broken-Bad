@@ -30,12 +30,9 @@ public class Satisfied extends MobEffect {
         super(p_19451_, p_19452_);
         meths.add(new ItemStack(AllItems.BLUE_METH.get()));
         meths.add(new ItemStack(AllItems.WHITE_METH.get()));
+        // boombleberry can cure addiction
+        meths.add(new ItemStack(AllItems.BOOMBLEBERRY.get()));
     }
-
-    /*@Override
-    public List<ItemStack> getCurativeItems() {
-        return null;
-    }*/
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {

@@ -1,10 +1,7 @@
 package com.jetpacker06.CreateBrokenBad.register;
 
 import com.jetpacker06.CreateBrokenBad.CreateBrokenBad;
-import com.jetpacker06.CreateBrokenBad.effect.Satisfied;
 import com.jetpacker06.CreateBrokenBad.item.*;
-import net.minecraft.core.Registry;
-import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -16,23 +13,32 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AllItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, CreateBrokenBad.MOD_ID);
+    //drop from boomble that cures addiction
+    public static final FoodProperties CURE_METH = (new FoodProperties.Builder()).nutrition(0).saturationMod(0)
+            .alwaysEat().build();
+    public static final RegistryObject<Item> BOOMBLEBERRY = ITEMS.register("boombleberry", () -> new BoombleBerryItem(new Item.Properties().tab(ItemGroup.CREATEBB).food(CURE_METH)));
+
     //begin items
     public static final FoodProperties GOOD_METH = (new FoodProperties.Builder()).nutrition(0).saturationMod(0)
         // good effects
         .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 30*20, 4), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 10*20, 2), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 15*20, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60*20, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60*20*60, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 2), 1.0F)
         // bad effects
         .effect(new MobEffectInstance(MobEffects.HUNGER, 3*20, 1), 1.0F)
         .effect(new MobEffectInstance(MobEffects.BLINDNESS, 1*20, 1), 1.0F)
         // my effects >:)
         .effect(() -> {
-            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 10*20, 1);
-            r.setCurativeItems(new ArrayList<ItemStack>());
+            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 60*20*60, 1);
+            r.setCurativeItems(new ArrayList<>(List.of(new ItemStack(BOOMBLEBERRY.get()))));
             return r;
         }, 1.0F)
         .alwaysEat().build();
@@ -40,15 +46,17 @@ public class AllItems {
     public static final FoodProperties BAD_METH = (new FoodProperties.Builder()).nutrition(0).saturationMod(0)
         // good effects
         .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 15*20, 2), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 5*20, 1), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 8*20, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 30*20, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 20*20*60, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 1), 1.0F)
         // bad effects
         .effect(new MobEffectInstance(MobEffects.HUNGER, 5*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.BLINDNESS, 3*20, 2), 1.0F)
         // my effects >:)
         .effect(() -> {
-            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 5*20, 0);
-            r.setCurativeItems(new ArrayList<ItemStack>());
+            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 20*20*60, 0);
+            r.setCurativeItems(new ArrayList<>(List.of(new ItemStack(BOOMBLEBERRY.get()))));
             return r;
         }, 1.0F)
         .alwaysEat().build();
