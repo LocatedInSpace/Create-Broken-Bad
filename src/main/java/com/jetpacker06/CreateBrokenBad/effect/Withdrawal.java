@@ -3,6 +3,8 @@ package com.jetpacker06.CreateBrokenBad.effect;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 
 import java.util.Random;
@@ -20,13 +22,15 @@ public class Withdrawal extends MobEffect {
             "i can feel it approaching",
             "anyone, please, anyone, help me",
             "i dont want to die",
-            "mom, please dont leave me like this, please",
-            "it's getting dark out, huh...",
-            "what a way to go for me, methheads prosper in death...",
             "WHERE THE FUCK IS THE METH",
             "YOU SONS OF BITCHES, I WILL KILL ALL OF YOU",
             "IF YOU HAVE CHILDREN - YOU WILL NOT SOON",
-            ";-;",
+            ";-;"};
+
+    String[] deathResponses = {
+            "mom, please dont leave me like this, please",
+            "it's getting dark out, huh...",
+            "what a way to go for me, methheads prosper in death...",
             "goodbye everyone, don't wait up"};
 
     @Override
@@ -34,35 +38,46 @@ public class Withdrawal extends MobEffect {
         if(pLivingEntity.level.isClientSide) {
             return;
         }
-        pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+        boolean lastTick = false;
+        for (MobEffectInstance mi : pLivingEntity.getActiveEffects()) {
+            if(mi.getEffect() instanceof Withdrawal) {
+                lastTick = mi.getDuration() == 1;
+            }
+        }
 
-        /*if (this == MobEffects.REGENERATION) {
-            if (pLivingEntity.getHealth() < pLivingEntity.getMaxHealth()) {
-                pLivingEntity.heal(1.0F);
-            }
-        } else if (this == MobEffects.POISON) {
-            if (pLivingEntity.getHealth() > 1.0F) {
-                pLivingEntity.hurt(DamageSource.MAGIC, 1.0F);
-            }
-        } else if (this == MobEffects.WITHER) {
-            pLivingEntity.hurt(DamageSource.WITHER, 1.0F);
-        } else if (this == MobEffects.HUNGER && pLivingEntity instanceof Player) {
-            ((Player)pLivingEntity).causeFoodExhaustion(0.005F * (float)(pAmplifier + 1));
-        } else if (this == MobEffects.SATURATION && pLivingEntity instanceof Player) {
-            if (!pLivingEntity.level.isClientSide) {
-                ((Player)pLivingEntity).getFoodData().eat(pAmplifier + 1, 1.0F);
-            }
-        } else if ((this != MobEffects.HEAL || pLivingEntity.isInvertedHealAndHarm()) && (this != MobEffects.HARM || !pLivingEntity.isInvertedHealAndHarm())) {
-            if (this == MobEffects.HARM && !pLivingEntity.isInvertedHealAndHarm() || this == MobEffects.HEAL && pLivingEntity.isInvertedHealAndHarm()) {
-                pLivingEntity.hurt(DamageSource.MAGIC, (float)(6 << pAmplifier));
-            }
+        if(lastTick) {
+            pLivingEntity.sendMessage(new TextComponent(deathResponses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            pLivingEntity.kill();
         } else {
-            pLivingEntity.heal((float)Math.max(4 << pAmplifier, 0));
-        }*/
+            pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20*20, 1));
+            }
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 20*20, 2));
+            }
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.HUNGER, 20*20, 2));
+            }
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20*20, 2));
+            }
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 20*20, 2));
+            }
+            if(rnd.nextBoolean()) {
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 20*20, 1));
+            }
+        }
     }
 
     @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        // last tick always runs, for causing instant death
+        if(pDuration == 1) {
+            return true;
+        }
+
         // roughly every 60 seconds
         return rnd.nextInt(60*20) == 1;
     }
