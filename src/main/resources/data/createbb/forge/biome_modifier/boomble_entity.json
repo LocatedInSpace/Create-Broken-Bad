@@ -3,8 +3,8 @@
   "biomes": "jungle",
   "spawners": {
     "type": "createbb:boomble",
-    "weight": 1000,
-    "minCount": 10,
-    "maxCount": 20
+    "weight": 1,
+    "minCount": 0,
+    "maxCount": 2
   }
 }

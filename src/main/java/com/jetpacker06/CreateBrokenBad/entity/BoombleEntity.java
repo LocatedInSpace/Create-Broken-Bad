@@ -57,7 +57,7 @@ public class BoombleEntity extends Animal {
     }
 
     public static boolean canSpawn(EntityType<BoombleEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
-        return rnd.nextInt(10000) != 42;
+        return rnd.nextInt(100) == 42;
     }
 
     @Override

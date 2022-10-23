@@ -26,16 +26,18 @@ public class Satisfied extends MobEffect {
     private final ArrayList<ItemStack> meths = new ArrayList<>();
     public Satisfied(MobEffectCategory p_19451_, int p_19452_) {
         super(p_19451_, p_19452_);
-        meths.add(new ItemStack(AllItems.BLUE_METH.get()));
-        meths.add(new ItemStack(AllItems.WHITE_METH.get()));
-        // boombleberry can cure addiction
-        meths.add(new ItemStack(AllItems.BOOMBLEBERRY.get()));
     }
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if(pLivingEntity.level.isClientSide) {
             return;
+        }
+        if(meths.isEmpty()) {
+            meths.add(new ItemStack(AllItems.BLUE_METH::get));
+            meths.add(new ItemStack(AllItems.WHITE_METH::get));
+            // boombleberry can cure addiction
+            meths.add(new ItemStack(AllItems.BOOMBLEBERRY::get));
         }
         pLivingEntity.sendSystemMessage(Component.literal("Some more meth would be nice..."));
         /*/ bad meth
