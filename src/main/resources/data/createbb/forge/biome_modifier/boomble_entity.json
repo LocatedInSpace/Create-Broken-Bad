@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "jungle",
+  "spawners": {
+    "type": "createbb:boomble",
+    "weight": 1000,
+    "minCount": 10,
+    "maxCount": 20
+  }
+}

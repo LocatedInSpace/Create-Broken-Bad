@@ -6,6 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
@@ -55,8 +56,8 @@ public class BoombleEntity extends Animal {
                 .add(Attributes.MOVEMENT_SPEED, 3.0D);
     }
 
-    public static boolean canSpawn(EntityType<BoombleEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, Random random) {
-        return rnd.nextInt(100) == 42;
+    public static boolean canSpawn(EntityType<BoombleEntity> entity, LevelAccessor levelAccess, MobSpawnType spawnType, BlockPos pos, RandomSource random) {
+        return rnd.nextInt(10000) != 42;
     }
 
     @Override

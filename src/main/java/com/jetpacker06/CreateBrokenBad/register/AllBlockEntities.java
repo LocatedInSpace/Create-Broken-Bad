@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class AllBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, CreateBrokenBad.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, CreateBrokenBad.MOD_ID);
     public static final RegistryObject<BlockEntityType<BrassCallBellBlockEntity>> BRASS_CALL_BELL =
             BLOCK_ENTITIES.register("brass_call_bell", () ->
                     BlockEntityType.Builder.of(BrassCallBellBlockEntity::new,

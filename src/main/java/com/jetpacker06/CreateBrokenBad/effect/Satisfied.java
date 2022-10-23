@@ -6,8 +6,6 @@ import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -39,13 +37,16 @@ public class Satisfied extends MobEffect {
         if(pLivingEntity.level.isClientSide) {
             return;
         }
-        // bad meth
+        pLivingEntity.sendSystemMessage(Component.literal("Some more meth would be nice..."));
+        /*/ bad meth
         if(pAmplifier == 0) {
-            pLivingEntity.sendMessage(new TextComponent("Need some more shit meth..."), pLivingEntity.getUUID());
+            pLivingEntity.sendSystemMessage(Component.literal("Some more meth would be nice..."));
+            //pLivingEntity.sendMessage(new TextComponent("Need some more shit meth..."), pLivingEntity.getUUID());
         // good meth
         } else if (pAmplifier == 1) {
-            pLivingEntity.sendMessage(new TextComponent("Oh yeah.. that's the good stuff"), pLivingEntity.getUUID());
-        }
+            //pLivingEntity.sendMessage(new TextComponent("Oh yeah.. that's the good stuff"), pLivingEntity.getUUID());
+            //pLivingEntity.sendSystemMessage(Component.literal(responses[rnd.nextInt(responses.length)]));
+        }//*/
 
         MobEffectInstance craving = new MobEffectInstance(AllEffects.CRAVING.get(), 15*20*60, 0);
         craving.setCurativeItems(meths);

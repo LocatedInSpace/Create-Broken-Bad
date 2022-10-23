@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class AllEntities {
     public static final DeferredRegister<EntityType<?>> ENTITIES =
-            DeferredRegister.create(ForgeRegistries.ENTITIES, CreateBrokenBad.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, CreateBrokenBad.MOD_ID);
 
     public static final RegistryObject<EntityType<BoombleEntity>> BOOMBLE = ENTITIES.register("boomble",
             () -> EntityType.Builder.of(BoombleEntity::new, MobCategory.CREATURE).sized(0.7F, 1.6F).build(new ResourceLocation(CreateBrokenBad.MOD_ID, "boomble").toString())  );

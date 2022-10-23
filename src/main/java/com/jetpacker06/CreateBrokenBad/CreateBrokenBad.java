@@ -19,9 +19,9 @@ public class CreateBrokenBad {
     public static final String MOD_ID = "createbb";
     public CreateBrokenBad() {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        AllItems.register(eventBus);
         AllEffects.register(eventBus);
         AllBlocks.register(eventBus);
-        AllItems.register(eventBus);
         AllFluids.register(eventBus);
         AllBlockEntities.register(eventBus);
         AllSoundEvents.register(eventBus);

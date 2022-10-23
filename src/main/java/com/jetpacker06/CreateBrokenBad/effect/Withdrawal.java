@@ -1,6 +1,8 @@
 package com.jetpacker06.CreateBrokenBad.effect;
 
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -45,11 +47,15 @@ public class Withdrawal extends MobEffect {
             }
         }
 
+        ServerPlayer p = (ServerPlayer)pLivingEntity;
+
         if(lastTick) {
-            pLivingEntity.sendMessage(new TextComponent(deathResponses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            //pLivingEntity.sendMessage(new TextComponent(deathResponses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            p.connection.send(new ClientboundSystemChatPacket(Component.literal(deathResponses[rnd.nextInt(deathResponses.length)]), true));
             pLivingEntity.kill();
         } else {
-            pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            //pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            p.connection.send(new ClientboundSystemChatPacket(Component.literal(responses[rnd.nextInt(responses.length)]), true));
             if(rnd.nextBoolean()) {
                 pLivingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20*20, 1));
             }

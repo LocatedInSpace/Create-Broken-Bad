@@ -3,13 +3,19 @@ package com.jetpacker06.CreateBrokenBad.effect;
 import com.jetpacker06.CreateBrokenBad.register.AllEffects;
 import com.jetpacker06.CreateBrokenBad.register.AllItems;
 import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.client.gui.components.ChatComponent;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
+import net.minecraft.network.protocol.game.ServerboundChatCommandPacket;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -60,7 +66,9 @@ public class Craving extends MobEffect {
             withdrawal.setCurativeItems(meths);
             pLivingEntity.addEffect(withdrawal);
         } else {
-            pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
+            ServerPlayer p = (ServerPlayer)pLivingEntity;
+            p.connection.send(new ClientboundSystemChatPacket(Component.literal(responses[rnd.nextInt(responses.length)]), true));
+            //pLivingEntity.sendSystemMessage(Component.literal(responses[rnd.nextInt(responses.length)]));
         }
     }
 
