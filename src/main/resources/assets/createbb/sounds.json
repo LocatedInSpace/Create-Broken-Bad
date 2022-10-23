@@ -4,5 +4,37 @@
     "sounds": [
       "createbb:call_bell"
     ]
+  },
+  "boombledie": {
+    "sounds": [
+      {
+        "name": "createbb:boombledie",
+        "stream": false
+      }
+    ]
+  },
+  "boomblehit": {
+    "sounds": [
+      {
+        "name": "createbb:boomblehit",
+        "stream": false
+      }
+    ]
+  },
+  "boomblelive": {
+    "sounds": [
+      {
+        "name": "createbb:boomblelive",
+        "stream": false
+      }
+    ]
+  },
+  "boombledie2": {
+    "sounds": [
+      {
+        "name": "createbb:boomblediecropped",
+        "stream": false
+      }
+    ]
   }
 }

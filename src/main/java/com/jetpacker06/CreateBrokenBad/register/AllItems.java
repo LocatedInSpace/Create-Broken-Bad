@@ -7,6 +7,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.FlowingFluid;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,7 +24,7 @@ public class AllItems {
     public static final FoodProperties CURE_METH = (new FoodProperties.Builder()).nutrition(0).saturationMod(0)
             .alwaysEat().build();
     public static final RegistryObject<Item> BOOMBLEBERRY = ITEMS.register("boombleberry", () -> new BoombleBerryItem(new Item.Properties().tab(ItemGroup.CREATEBB).food(CURE_METH)));
-
+    public static final RegistryObject<ForgeSpawnEggItem> BOOMBLE_SPAWNEGG = ITEMS.register("boomble_spawn_egg", () -> new ForgeSpawnEggItem(AllEntities.BOOMBLE, 0x348ceb, 0xffffff, new Item.Properties().tab(CreativeModeTab.TAB_MISC)));
     //begin items
     public static final FoodProperties GOOD_METH = (new FoodProperties.Builder()).nutrition(0).saturationMod(0)
         // good effects
@@ -31,9 +32,9 @@ public class AllItems {
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60*20*60, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 2), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 1), 1.0F)
         // bad effects
-        .effect(new MobEffectInstance(MobEffects.HUNGER, 3*20, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HUNGER, 15*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.BLINDNESS, 1*20, 1), 1.0F)
         // my effects >:)
         .effect(() -> {
@@ -51,11 +52,11 @@ public class AllItems {
         .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 1), 1.0F)
         .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 1), 1.0F)
         // bad effects
-        .effect(new MobEffectInstance(MobEffects.HUNGER, 5*20, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HUNGER, 20*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.BLINDNESS, 3*20, 2), 1.0F)
         // my effects >:)
         .effect(() -> {
-            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 20*20*60, 0);
+            MobEffectInstance r = new MobEffectInstance(AllEffects.SATISFIED.get(), 15*20*60, 0);
             r.setCurativeItems(new ArrayList<>(List.of(new ItemStack(BOOMBLEBERRY.get()))));
             return r;
         }, 1.0F)

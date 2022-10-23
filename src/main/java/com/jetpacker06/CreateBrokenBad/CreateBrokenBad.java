@@ -25,6 +25,7 @@ public class CreateBrokenBad {
         AllFluids.register(eventBus);
         AllBlockEntities.register(eventBus);
         AllSoundEvents.register(eventBus);
+        AllEntities.register(eventBus);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);

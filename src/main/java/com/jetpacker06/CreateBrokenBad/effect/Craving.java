@@ -73,13 +73,4 @@ public class Craving extends MobEffect {
         // roughly every 90 seconds
         return rnd.nextInt(90*20) == 1;
     }
-
-    @Override
-    protected String getOrCreateDescriptionId() {
-        /*if (this.descriptionId == null) {
-            this.descriptionId = Util.makeDescriptionId("effect", Registry.MOB_EFFECT.getKey(this));
-        }*/
-        return "Craving...";
-    }
-
 }

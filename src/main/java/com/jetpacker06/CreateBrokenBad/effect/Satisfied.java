@@ -47,7 +47,7 @@ public class Satisfied extends MobEffect {
             pLivingEntity.sendMessage(new TextComponent("Oh yeah.. that's the good stuff"), pLivingEntity.getUUID());
         }
 
-        MobEffectInstance craving = new MobEffectInstance(AllEffects.CRAVING.get(), 1*20*60, 0);
+        MobEffectInstance craving = new MobEffectInstance(AllEffects.CRAVING.get(), 15*20*60, 0);
         craving.setCurativeItems(meths);
         pLivingEntity.addEffect(craving);
     }
@@ -56,13 +56,4 @@ public class Satisfied extends MobEffect {
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return pDuration == 1;
     }
-
-    @Override
-    protected String getOrCreateDescriptionId() {
-        /*if (this.descriptionId == null) {
-            this.descriptionId = Util.makeDescriptionId("effect", Registry.MOB_EFFECT.getKey(this));
-        }*/
-        return "Satisfied";
-    }
-
 }

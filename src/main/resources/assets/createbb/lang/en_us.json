@@ -1,4 +1,11 @@
 {
+  "item.createbb.boomble_spawn_egg": "Spawn Boomble",
+  "item.createbb.boombleberry": "Boombleberry",
+  "effect.createbb.satisfied": "Satisfied",
+  "effect.createbb.craving": "Craving...",
+  "effect.createbb.withdrawal": "Withdrawal",
+  "entity.createbb.boomble": "Boomble",
+
   "item.createbb.ephedra_seeds": "Ephedra Seeds",
   "item.createbb.ephedra": "Ephedra",
   "item.createbb.pseudophedrine": "Pseudophedrine",

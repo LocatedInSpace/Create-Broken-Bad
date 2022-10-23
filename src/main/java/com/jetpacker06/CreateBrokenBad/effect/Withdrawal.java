@@ -63,11 +63,11 @@ public class Withdrawal extends MobEffect {
                 pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 20*20, 2));
             }
             if(rnd.nextBoolean()) {
-                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 20*20, 2));
+                pLivingEntity.addEffect(new MobEffectInstance(MobEffects.POISON, 20*20, 1));
             }
-            if(rnd.nextBoolean()) {
+            /*if(rnd.nextBoolean()) {
                 pLivingEntity.addEffect(new MobEffectInstance(MobEffects.WITHER, 20*20, 1));
-            }
+            }*/
         }
     }
 
@@ -81,13 +81,4 @@ public class Withdrawal extends MobEffect {
         // roughly every 60 seconds
         return rnd.nextInt(60*20) == 1;
     }
-
-    @Override
-    protected String getOrCreateDescriptionId() {
-        /*if (this.descriptionId == null) {
-            this.descriptionId = Util.makeDescriptionId("effect", Registry.MOB_EFFECT.getKey(this));
-        }*/
-        return "Withdrawal";
-    }
-
 }
