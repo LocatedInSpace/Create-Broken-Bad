@@ -1,5 +1,6 @@
 package com.jetpacker06.CreateBrokenBad.effect;
 
+import com.jetpacker06.CreateBrokenBad.FakeChat;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundSystemChatPacket;
 import net.minecraft.server.level.ServerPlayer;
@@ -50,8 +51,7 @@ public class Withdrawal extends MobEffect {
         ServerPlayer p = (ServerPlayer)pLivingEntity;
 
         if(lastTick) {
-            //pLivingEntity.sendMessage(new TextComponent(deathResponses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
-            p.connection.send(new ClientboundSystemChatPacket(Component.literal(deathResponses[rnd.nextInt(deathResponses.length)]), true));
+            FakeChat.SendFakeChat((ServerPlayer) pLivingEntity, deathResponses[rnd.nextInt(deathResponses.length)]);
             pLivingEntity.kill();
         } else {
             //pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());

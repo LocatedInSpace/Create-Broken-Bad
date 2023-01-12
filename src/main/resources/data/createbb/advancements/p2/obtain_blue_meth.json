@@ -7,7 +7,7 @@
     "description": "Crack a tray of blue meth.",
     "frame": "challenge",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": false
   },
   "parent": "createbb:p2/obtain_liquid_blue_methamphetamine_bucket",
   "criteria": {

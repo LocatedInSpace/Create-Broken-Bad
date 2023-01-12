@@ -7,7 +7,7 @@
     "description": "Crack a tray of white meth.",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": false
   },
   "parent": "createbb:p1/obtain_sudafed",
   "criteria": {

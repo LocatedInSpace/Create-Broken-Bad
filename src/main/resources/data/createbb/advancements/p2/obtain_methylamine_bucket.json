@@ -7,7 +7,7 @@
     "description": "Obtain a bucket of methylamine.",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true
+    "announce_to_chat": false
   },
   "parent": "createbb:createbb",
   "criteria": {

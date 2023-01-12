@@ -7,7 +7,7 @@
     "description": "Create the infamous decongestant.",
     "frame": "task",
     "show_toast": true,
-    "announce_to_chat": true,
+    "announce_to_chat": false,
     "hidden": true
   },
   "parent": "createbb:p1/obtain_ephedra",

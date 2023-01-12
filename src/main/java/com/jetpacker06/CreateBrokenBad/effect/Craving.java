@@ -1,5 +1,6 @@
 package com.jetpacker06.CreateBrokenBad.effect;
 
+import com.jetpacker06.CreateBrokenBad.FakeChat;
 import com.jetpacker06.CreateBrokenBad.register.AllEffects;
 import com.jetpacker06.CreateBrokenBad.register.AllItems;
 import net.minecraft.client.Minecraft;
@@ -68,9 +69,7 @@ public class Craving extends MobEffect {
             withdrawal.setCurativeItems(meths);
             pLivingEntity.addEffect(withdrawal);
         } else {
-            ServerPlayer p = (ServerPlayer)pLivingEntity;
-            p.connection.send(new ClientboundSystemChatPacket(Component.literal(responses[rnd.nextInt(responses.length)]), true));
-            //pLivingEntity.sendSystemMessage(Component.literal(responses[rnd.nextInt(responses.length)]));
+            FakeChat.SendFakeChat((ServerPlayer) pLivingEntity, responses[rnd.nextInt(responses.length)]);
         }
     }
 

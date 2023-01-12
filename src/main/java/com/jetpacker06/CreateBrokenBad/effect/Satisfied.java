@@ -1,5 +1,6 @@
 package com.jetpacker06.CreateBrokenBad.effect;
 
+import com.jetpacker06.CreateBrokenBad.FakeChat;
 import com.jetpacker06.CreateBrokenBad.register.AllEffects;
 import com.jetpacker06.CreateBrokenBad.register.AllItems;
 import net.minecraft.Util;
@@ -39,16 +40,7 @@ public class Satisfied extends MobEffect {
             // boombleberry can cure addiction
             meths.add(new ItemStack(AllItems.BOOMBLEBERRY::get));
         }
-        pLivingEntity.sendSystemMessage(Component.literal("Some more meth would be nice..."));
-        /*/ bad meth
-        if(pAmplifier == 0) {
-            pLivingEntity.sendSystemMessage(Component.literal("Some more meth would be nice..."));
-            //pLivingEntity.sendMessage(new TextComponent("Need some more shit meth..."), pLivingEntity.getUUID());
-        // good meth
-        } else if (pAmplifier == 1) {
-            //pLivingEntity.sendMessage(new TextComponent("Oh yeah.. that's the good stuff"), pLivingEntity.getUUID());
-            //pLivingEntity.sendSystemMessage(Component.literal(responses[rnd.nextInt(responses.length)]));
-        }//*/
+        FakeChat.SendFakeChat((ServerPlayer) pLivingEntity, "Some more meth would be nice...");
 
         MobEffectInstance craving = new MobEffectInstance(AllEffects.CRAVING.get(), 15*20*60, 0);
         craving.setCurativeItems(meths);
