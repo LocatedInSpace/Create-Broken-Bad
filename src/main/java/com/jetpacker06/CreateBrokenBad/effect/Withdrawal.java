@@ -33,7 +33,7 @@ public class Withdrawal extends MobEffect {
     String[] deathResponses = {
             "mom, please dont leave me like this, please",
             "it's getting dark out, huh...",
-            "what a way to go for me, methheads prosper in death...",
+            "what a way to go,, methheads prosper in death...",
             "goodbye everyone, don't wait up"};
 
     @Override
@@ -48,14 +48,11 @@ public class Withdrawal extends MobEffect {
             }
         }
 
-        ServerPlayer p = (ServerPlayer)pLivingEntity;
-
         if(lastTick) {
             FakeChat.SendFakeChat((ServerPlayer) pLivingEntity, deathResponses[rnd.nextInt(deathResponses.length)]);
             pLivingEntity.kill();
         } else {
-            //pLivingEntity.sendMessage(new TextComponent(responses[rnd.nextInt(responses.length)]), pLivingEntity.getUUID());
-            p.connection.send(new ClientboundSystemChatPacket(Component.literal(responses[rnd.nextInt(responses.length)]), true));
+            FakeChat.SendFakeChat((ServerPlayer) pLivingEntity, responses[rnd.nextInt(responses.length)]);
             if(rnd.nextBoolean()) {
                 pLivingEntity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 20*20, 1));
             }

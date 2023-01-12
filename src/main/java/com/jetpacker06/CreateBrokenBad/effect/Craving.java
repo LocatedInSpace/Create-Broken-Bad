@@ -79,7 +79,7 @@ public class Craving extends MobEffect {
         if(pDuration == 1) {
             return true;
         }
-        // roughly every 90 seconds
-        return rnd.nextInt(90*20) == 1;
+        // roughly every 3 minutes
+        return rnd.nextInt(3*20*60) == 1;
     }
 }
