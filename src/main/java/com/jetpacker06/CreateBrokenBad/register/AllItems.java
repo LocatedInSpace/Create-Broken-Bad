@@ -29,7 +29,7 @@ public class AllItems {
         // good effects
         .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 30*20, 4), 1.0F)
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 60*20, 2), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 60*20*60, 2), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 30*20*60, 1), 1.0F)
         .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 1), 1.0F)
         // bad effects
@@ -47,7 +47,7 @@ public class AllItems {
         // good effects
         .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 15*20, 2), 1.0F)
         .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 30*20, 1), 1.0F)
-        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 20*20*60, 1), 1.0F)
+        .effect(new MobEffectInstance(MobEffects.HEALTH_BOOST, 10*20*60, 1), 1.0F)
         .effect(new MobEffectInstance(MobEffects.REGENERATION, 5*20, 1), 1.0F)
         .effect(new MobEffectInstance(MobEffects.SATURATION, 5*20, 1), 1.0F)
         // bad effects
